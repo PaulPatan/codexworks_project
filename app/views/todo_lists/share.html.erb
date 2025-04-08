@@ -1,0 +1,31 @@
+<turbo-frame id="main_content">
+  <h2>Share <%= @todo_list.title %></h2>
+  
+  <% if @todo_list.shared_lists.any? %>
+    <h3>Currently shared with:</h3>
+    <ul>
+      <% @todo_list.shared_lists.each do |shared_list| %>
+        <li>
+          <%= shared_list.user.email %> (<%= shared_list.permission %>)
+          <%= button_to "Remove", shared_list_path(shared_list), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "button-link" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_with(url: share_todo_list_path(@todo_list), method: :post, data: { turbo_frame: "main_content" }) do |f| %>
+    <div>
+      <%= f.label :email, "User Email" %><br>
+      <%= f.email_field :email, required: true %>
+    </div>
+    
+    <div>
+      <%= f.label :permission %><br>
+      <%= f.select :permission, [['Read Only', 'read'], ['Read & Write', 'write']] %>
+    </div>
+    
+    <%= f.submit "Share" %>
+  <% end %>
+  
+  <%= link_to "Back", todo_list_path(@todo_list), data: { turbo_frame: "main_content" } %>
+</turbo-frame>

@@ -1,0 +1,26 @@
+<turbo-frame id="main_content">
+  <h2>All Todo Lists</h2>
+  
+  <h3>My Lists</h3>
+  <ul>
+    <% @todo_lists.each do |list| %>
+      <li>
+        <%= link_to list.title, todo_list_path(list), data: { turbo_frame: "main_content" } %>
+      </li>
+    <% end %>
+  </ul>
+  
+  <% if @shared_lists.present? %>
+    <h3>Shared With Me</h3>
+    <ul>
+      <% @shared_lists.each do |list| %>
+        <li>
+          <%= link_to list.title, todo_list_path(list), data: { turbo_frame: "main_content" } %> 
+          (Shared by <%= list.user.email %>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= link_to "Create New List", new_todo_list_path, data: { turbo_frame: "main_content" } %>
+</turbo-frame>

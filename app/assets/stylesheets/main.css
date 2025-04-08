@@ -1,0 +1,46 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps.
+ */
+
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, we use standard CSS imports
+ */
+
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('layouts/header.css');
+@import url('layouts/main.css');
+@import url('layouts/sidebar.css');
+@import url('components/buttons.css');
+@import url('components/forms.css');
+@import url('components/todo_lists.css');
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Fix for turbo frame transitions */
+turbo-frame {
+  display: block;
+}

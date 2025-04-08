@@ -1,0 +1,37 @@
+<turbo-frame id="main_content">
+  <h2>Edit Task</h2>
+  
+  <%= form_with(model: [@todo_list, @task], data: { turbo_frame: "main_content" }) do |f| %>
+    <% if @task.errors.any? %>
+      <div class="error-messages">
+        <h3><%= pluralize(@task.errors.count, "error") %> prevented this task from being saved:</h3>
+        <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  
+  <%= link_to "Back to List", todo_list_path(@todo_list), data: { turbo_frame: "main_content" } %>
+</turbo-frame>

@@ -1,0 +1,19 @@
+<h1>Welcome, <%= current_user.email %>!</h1>
+
+<div class="spa-container">
+  <aside>
+    <ul>
+       <li>
+        <%= link_to "All Lists", todo_lists_path, data: { turbo_frame: "main_content" } %>
+      </li>
+      <%# <li>
+        <%# <%= link_to "My Profile", "#", %>
+          <%# data: { turbo_frame: "main_content", action: "click->spa#loadProfile" } %>
+      <%# </li> %>
+    </ul>
+  </aside>
+
+  <turbo-frame id="main_content">
+    <p>Select an option from the sidebar.</p>
+  </turbo-frame>
+</div>

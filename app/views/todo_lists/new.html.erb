@@ -1,0 +1,5 @@
+<turbo-frame id="main_content">
+  <h2>New Todo List</h2>
+  <%= render "form", todo_list: @todo_list %>
+  <%= link_to "Back", todo_lists_path, data: { turbo_frame: "main_content" } %>
+</turbo-frame>
