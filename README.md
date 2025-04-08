@@ -6,3 +6,11 @@ O alta mentiune importanta este aceea ca am folosit Devise in loc de Authlogic p
 
 * ...
 ![image](https://github.com/user-attachments/assets/4633f3c3-3c01-446d-97b4-845dc05ee81b)
+
+![image](https://github.com/user-attachments/assets/510b3477-e2fd-41fd-a8d8-8b997fab1b7e)
+
+![image](https://github.com/user-attachments/assets/1bd42aa4-b0bc-4443-8d0b-bb33197d0409)
+
+
+
+
