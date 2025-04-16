@@ -1,0 +1,66 @@
+@use '../abstracts/variables.scss' as *;
+@use '../abstracts/mixins.scss' as *;
+
+.btn,
+button,
+input[type='button'],
+input[type='submit'] {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: $border-radius;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: #2980b9;
+    text-decoration: none;
+    color: white;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  @include button($primary-color, white);
+}
+
+.btn-secondary {
+  @include button($secondary-color, white);
+}
+
+.btn-danger {
+  @include button($danger-color, white);
+}
+
+.btn-warning {
+  @include button($warning-color, black);
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+}

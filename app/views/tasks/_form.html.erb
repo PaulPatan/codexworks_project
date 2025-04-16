@@ -1,31 +1,27 @@
 <%= form_with(model: [@todo_list, task], data: { turbo_frame: "main_content" }) do |f| %>
   <% if task.errors.any? %>
-    <ul>
-      <% task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="error-messages">
+      <h3><%= pluralize(task.errors.count, "error") %> prevented this task from being saved:</h3>
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-
-  <div>
-    <%= f.label :content %><br>
+  <div class="field">
+    <%= f.label :content %>
     <%= f.text_field :content %>
   </div>
-
-  <div>
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-
-  <div>
-    <%= f.label :deadline %><br>
+  <div class="field">
+    <%= f.label :deadline %>
     <%= f.datetime_select :deadline %>
   </div>
-
-  <div>
+  <div class="field">
     <%= f.label :completed %>
     <%= f.check_box :completed %>
   </div>
-
-  <%= f.submit %>
+  <div class="actions">
+    <%= f.submit class: "btn" %>
+  </div>
 <% end %>

@@ -1,0 +1,14 @@
+<turbo-stream action="append" target="notes-list">
+  <template>
+    <div class="note">
+      <p><%= @note.content %></p>
+      <div class="note-meta">
+        Added by <%= @note.user.email %> on <%= @note.created_at.strftime("%b %d, %Y at %H:%M") %>
+        <% if @note.user == current_user %>
+          <%= link_to "Delete", url_for([@notable, @note]),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+    </div>
+  </template>
+</turbo-stream>

@@ -9,13 +9,25 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if verify_recaptcha
+      super
+    else
+      flash[:alert] = "reCaptcha verification failed. Please try again."
+      redirect_to new_user_session_path
+    end
+  end
+
 
   # DELETE /resource/sign_out
   def destroy
-    super
+    signed_out = sign_out(resource_name)
+    set_flash_message! :notice, :signed_out if signed_out
+    redirect_to new_user_session_path
+  end
+
+  def logout_success
+    redirect_to new_user_session_path
   end
 
   # protected

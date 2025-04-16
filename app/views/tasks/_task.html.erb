@@ -1,40 +1,17 @@
-<li id="task_<%= task.id %>" data-task-target="item">
+<li class="task-item" id="task_<%= task.id %>" data-task-target="item">
   <input type="checkbox" 
+         class="task-checkbox"
          <%= task.completed ? 'checked' : '' %> 
          data-action="click->tasks#toggleComplete"
          data-task-id="<%= task.id %>"
          data-todo-list-id="<%= todo_list.id %>">
-  <span class="<%= task.completed ? 'completed' : '' %>">
+  <span class="task-content <%= task.completed ? 'task-completed' : '' %>">
     <%= task.content %>
   </span>
-  <% if task.notes.present? %>
-    <div class="notes"><%= task.notes %></div>
-  <% end %>
-  <%= link_to "Edit", edit_todo_list_task_path(todo_list, task), data: { turbo_frame: "main_content" } %>
-  <%= link_to "Delete", todo_list_task_path(todo_list, task), 
-        method: :delete, 
-        data: { turbo_confirm: "Are you sure?" } %>
-
-        <div class="task-notes">
-  <% task.notes.each do |note| %>
-    <div class="note">
-      <p><%= note.content %></p>
-      <div class="note-meta">
-        Added by <%= note.user.email %> on <%= note.created_at.strftime("%b %d, %Y at %H:%M") %>
-        <% if note.user == current_user %>
-          <%= link_to "Delete", todo_list_task_note_path(@todo_list, task, note), 
-                method: :delete, 
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  
-  <%= form_with(model: [@todo_list, task, Note.new], local: true) do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, rows: 2, placeholder: "Add a note about this task...", required: true %>
-    </div>
-    <%= f.submit "Add Note", class: "btn btn-sm" %>
-  <% end %>
-</div>
+  <div class="task-actions">
+    <%= link_to "Edit", edit_todo_list_task_path(todo_list, task), class: "secondary-button", data: { turbo_frame: "main_content" } %>
+    <%= link_to "Delete", todo_list_task_path(todo_list, task),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: "secondary-button" %>
+  </div>
 </li>

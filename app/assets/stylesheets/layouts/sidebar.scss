@@ -1,0 +1,63 @@
+@use '../abstracts/variables.scss' as *;
+
+aside {
+  width: 250px;
+  background-color: $gray-100;
+  padding: 1.5rem;
+  border-right: 1px solid $gray-200;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: $gray-700;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        color: $gray-700;
+        font-weight: 500;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: rgba($primary-color, 0.1);
+          color: $primary-color;
+          text-decoration: none;
+        }
+
+        &.active {
+          background-color: $primary-color;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: $gray-300;
+  margin: 1.5rem 0;
+}
+
+.sidebar-heading {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $gray-600;
+  letter-spacing: 0.05em;
+  margin: 1rem 0 0.5rem;
+}

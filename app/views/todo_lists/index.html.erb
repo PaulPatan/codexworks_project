@@ -1,26 +1,33 @@
-<turbo-frame id="main_content">
-  <h2>All Todo Lists</h2>
-  
-  <h3>My Lists</h3>
-  <ul>
-    <% @todo_lists.each do |list| %>
-      <li>
-        <%= link_to list.title, todo_list_path(list), data: { turbo_frame: "main_content" } %>
-      </li>
-    <% end %>
-  </ul>
-  
-  <% if @shared_lists.present? %>
-    <h3>Shared With Me</h3>
+<turbo-frame id="main_content" refresh="morph">
+  <div class="todo-lists-container">
+    <h2>All Todo Lists</h2>
+    <h3>My Lists</h3>
     <ul>
-      <% @shared_lists.each do |list| %>
+      <% @todo_lists.each do |list| %>
         <li>
-          <%= link_to list.title, todo_list_path(list), data: { turbo_frame: "main_content" } %> 
-          (Shared by <%= list.user.email %>)
+          <%= link_to list.title, todo_list_path(list), 
+                class: "todo-list-link", 
+                data: { turbo_frame: "main_content" } %>
         </li>
       <% end %>
     </ul>
-  <% end %>
-  
-  <%= link_to "Create New List", new_todo_list_path, data: { turbo_frame: "main_content" } %>
+    <% if @shared_lists.present? %>
+      <h3>Shared With Me</h3>
+      <ul>
+        <% @shared_lists.each do |list| %>
+          <li>
+            <%= link_to todo_list_path(list), 
+                  class: "todo-list-link", 
+                  data: { turbo_frame: "main_content" } do %>
+              <%= list.title %>
+              <span class="shared-list-info">(Shared by <%= list.user.email %>)</span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to "Create New List", new_todo_list_path, 
+          class: "create-list-button", 
+          data: { turbo_frame: "main_content" } %>
+  </div>
 </turbo-frame>

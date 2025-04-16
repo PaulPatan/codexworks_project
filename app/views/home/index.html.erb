@@ -1,19 +1,22 @@
-<h1>Welcome, <%= current_user.email %>!</h1>
-
 <div class="spa-container">
   <aside>
     <ul>
-       <li>
+      <li>
         <%= link_to "All Lists", todo_lists_path, data: { turbo_frame: "main_content" } %>
       </li>
       <%# <li>
-        <%# <%= link_to "My Profile", "#", %>
-          <%# data: { turbo_frame: "main_content", action: "click->spa#loadProfile" } %>
-      <%# </li> %>
+        <%= #link_to "My Profile", "#", data: { turbo_frame: "main_content", action: "click->spaloadProfile" } %>
+      <%# </li>  %>
     </ul>
   </aside>
-
-  <turbo-frame id="main_content">
+</div>
+<div data-controller="spa-navigation">
+  <turbo-frame 
+    id="main_content"
+    src="<%= todo_lists_path %>"
+    refresh="morph"
+    data-spa-navigation-target="mainContentFrame">
     <p>Select an option from the sidebar.</p>
   </turbo-frame>
+</div>
 </div>

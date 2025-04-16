@@ -1,0 +1,65 @@
+@use '../abstracts/variables.scss' as *;
+
+nav {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  position: relative;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-left: 1.5rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        color: $gray-700;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $primary-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  form.button_to {
+    margin-bottom: 0;
+    display: inline-block;
+
+    button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: $primary-color;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+}

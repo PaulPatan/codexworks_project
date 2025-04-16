@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.spa-container {
+  margin-right: 10px;
+  aside {
+    width: 100%;
+    background-color: $gray-100;
+    padding: 1.5rem;
+    height: 100%;
+  }
+}
+
+turbo-frame,
+.todo-lists-container {
+  width: 100%;
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.welcome-banner,
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: $box-shadow;
+}
+
+.card-header {
+  border-bottom: 1px solid $gray-200;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

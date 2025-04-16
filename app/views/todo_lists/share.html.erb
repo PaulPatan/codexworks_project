@@ -1,6 +1,5 @@
-<turbo-frame id="main_content">
+<turbo-frame id="main_content" refresh="morph">
   <h2>Share <%= @todo_list.title %></h2>
-  
   <% if @todo_list.shared_lists.any? %>
     <h3>Currently shared with:</h3>
     <ul>
@@ -12,20 +11,16 @@
       <% end %>
     </ul>
   <% end %>
-  
   <%= form_with(url: share_todo_list_path(@todo_list), method: :post, data: { turbo_frame: "main_content" }) do |f| %>
     <div>
       <%= f.label :email, "User Email" %><br>
       <%= f.email_field :email, required: true %>
     </div>
-    
     <div>
       <%= f.label :permission %><br>
       <%= f.select :permission, [['Read Only', 'read'], ['Read & Write', 'write']] %>
     </div>
-    
     <%= f.submit "Share" %>
   <% end %>
-  
   <%= link_to "Back", todo_list_path(@todo_list), data: { turbo_frame: "main_content" } %>
 </turbo-frame>
